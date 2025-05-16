@@ -1,0 +1,37 @@
+---
+// components/FilterScript.astro
+---
+<script is:inline>
+    if (typeof window !== 'undefined') {
+      const initFilter = () => {
+        const tabs = document.querySelectorAll('.filter-tab');
+        const cards = document.querySelectorAll('.product-card');
+  
+        if (!tabs.length || !cards.length) return;
+  
+        const filter = (category) => {
+          cards.forEach(card => {
+            const match = category === '전체' || card.dataset.category === category;
+            card.classList.toggle('hidden', !match);
+          });
+        };
+  
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const selected = tab.dataset.category;
+            if (!selected) return;
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            filter(selected);
+          });
+        });
+  
+        tabs[0].classList.add('active');
+        filter(tabs[0].dataset.category);
+      };
+  
+      window.addEventListener('DOMContentLoaded', initFilter);
+      document.addEventListener('astro:after-swap', initFilter);
+    }
+  </script>
+  

@@ -1,0 +1,29 @@
+---
+import { SITE } from 'astrowind:config';
+---
+
+<span
+  class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
+>
+  <div class="flex items-center space-x-2">
+    <!-- 라이트 모드 로고 -->
+    <img 
+      src="/images/dk-logo.png" 
+      alt="DK Logo (Light)" 
+      class="h-16 w-auto block dark:hidden" 
+      loading="lazy" 
+    />
+
+    <!-- 다크 모드 로고 -->
+    <img 
+      src="/images/dk-logo-white.png" 
+      alt="DK Logo (Dark)" 
+      class="h-16 w-auto hidden dark:block" 
+      loading="lazy" 
+    />
+
+    <span class="text-xl font-bold text-gray-900 dark:text-white">
+      {SITE?.name}
+    </span>
+  </div>
+</span>

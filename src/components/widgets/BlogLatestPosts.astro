@@ -1,0 +1,75 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { Widget } from '~/types';
+import Button from '../ui/Button.astro';
+
+// RSS 파서 유틸
+import { fetchNaverRssPosts } from '~/utils/fetchNaverRss';
+
+export interface Props extends Widget {
+  title?: string;
+  linkText?: string;
+  linkUrl?: string | URL;
+  information?: string;
+  count?: number;
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  linkText = '블로그 전체보기',
+  linkUrl = 'https://blog.naver.com/dksys_0814',
+  information = await Astro.slots.render('information'),
+  count = 4,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+// ✅ RSS에서 최신 글 파싱
+const posts = await fetchNaverRssPosts(count);
+
+// ✅ images/blog 폴더에 있는 이미지 리스트를 구성
+const totalImages = 8; // 실제 업로드된 개수에 맞춰 갱신
+const allImages = Array.from({ length: totalImages }, (_, i) => `default${i + 1}.jpg`);
+const shuffled = allImages.sort(() => 0.5 - Math.random());
+const randomThumbnails = shuffled.slice(0, posts.length);
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container as string} bg={bg}>
+  <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
+    {title && (
+      <div class="md:max-w-sm">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2" set:html={title} />
+        {linkText && linkUrl && (
+          <Button variant="link" href={linkUrl} target="_blank">
+            {linkText} »
+          </Button>
+        )}
+      </div>
+    )}
+    {information && (
+      <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />
+    )}
+  </div>
+
+  <!-- ✅ 썸네일 비율 및 여백 조정 -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {posts.map((post, index) => (
+      <a href={post.link} target="_blank" rel="noopener noreferrer"
+         class="block p-4 border rounded-lg shadow hover:shadow-md transition bg-white dark:bg-gray-800">
+        <div class="aspect-[4/3] overflow-hidden rounded-md mb-4">
+          <img src={`/images/blog/${randomThumbnails[index]}`} 
+               alt="블로그 이미지" 
+               class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
+        </div>
+        <div class="p-2">
+          <h3 class="font-semibold text-lg mb-2">{post.title}</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">{post.contentSnippet}</p>
+          <p class="text-xs text-gray-400 mt-3">{new Date(post.pubDate).toLocaleDateString()}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</WidgetWrapper>

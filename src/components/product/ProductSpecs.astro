@@ -1,0 +1,19 @@
+---
+const { specs } = Astro.props;
+---
+
+<div class="mt-10">
+  <h2 class="text-xl font-semibold text-gray-800 mb-4">제품 사양</h2>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm text-left border border-gray-200">
+      <tbody>
+        {specs.map(({ label, value }) => (
+          <tr class="border-b">
+            <th class="px-4 py-2 bg-gray-50 font-medium w-32">{label}</th>
+            <td class="px-4 py-2" set:html={value} />
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

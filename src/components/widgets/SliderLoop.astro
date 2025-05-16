@@ -1,0 +1,32 @@
+---
+// src/components/common/SliderLoop.astro
+export interface Props {
+  images: string[];
+  height?: string;
+  duration?: number;
+}
+
+const {
+  images = [],
+  height = 'h-72',
+  duration = 50
+} = Astro.props;
+---
+
+<div class="overflow-hidden w-full">
+  <div class="flex whitespace-nowrap gap-10" style={`animation: marquee ${duration}s linear infinite`}>
+    {images.concat(images).map((img, index) => (
+      <img src={`/images/${img}`} alt={`Slide-${index}`} class={`${height} w-auto`} />
+    ))}
+  </div>
+</div>
+
+<style>
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+</style>

@@ -1,0 +1,242 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: '회사소개',
+};
+---
+
+<Layout metadata={metadata}>
+<section class="bg-white dark:bg-[--aw-color-bg-default] py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto text-center">
+    <!-- 로고 -->
+    <div class="flex justify-center mb-1">
+      <img 
+        src="/images/dk-logo.png" 
+        alt="DK 시스템 로고" 
+        class="h-20 w-auto dark:hidden" 
+      />
+      <img 
+        src="/images/dk-logo-white.png" 
+        alt="DK 시스템 로고 (다크)" 
+        class="h-20 w-auto hidden dark:block" 
+      />
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">
+      디케이시스템에 대해
+    </h1>
+    <p class="text-gray-600 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
+      디케이시스템은 스마트 출입통제 시스템을 중심으로 보안과 편의성을 동시에 제공하는 솔루션을 개발해온 기업입니다.<br />
+      오랜 현장 경험과 기술력을 바탕으로 다양한 산업 분야에 맞춤형 시스템을 공급하고 있으며,<br class="hidden sm:inline" />
+      고객의 신뢰를 최우선 가치로 삼아 끊임없이 혁신하고 있습니다.
+    </p>
+  </div>
+</section>
+
+
+
+  <section class="bg-blue-50 dark:bg-gray-800 py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-blue-700 dark:text-blue-700 mb-4">전자 락 시스템 사업</h2>
+    <p class="text-center text-sm text-gray-700 dark:text-gray-300 mb-12">
+      커뮤니티 시스템키 · 호텔/스파 제어락 · 무인 발권기 · 수영장 · 리조트 · 통합스포츠센터
+    </p>
+  
+      <!-- Section 1: 호텔/스파 제어락 -->
+      <div class="mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-6">
+          <div>
+            <h3 class="text-xl font-semibold text-blue-600 mb-2">호텔 / 스파 제어락</h3>
+            <p class="text-gray-700 text-sm leading-relaxed dark:text-gray-300">
+              호텔 및 스파 시설에 최적화된 스마트 전자락 솔루션을 제공합니다. 고객의 편의성과 보안을 고려한 다양한 설정이 가능하며, 실시간 출입 기록 관리 및 통합 제어가 가능합니다.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-4 justify-center items-center">
+            <img src="/images/hotel.png" alt="호텔 외관" class="rounded shadow-md w-full object-cover max-h-48" />
+            <img src="/images/hotel.png" alt="호텔 락 제품 설치 예시" class="rounded shadow-md w-full object-cover max-h-48" />
+          </div>
+        </div>
+      </div>
+  
+      <!-- Section 2: 수영장 / 리조트 -->
+      <div class="mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-6">
+          <div class="order-2 md:order-1 grid grid-cols-2 gap-4 justify-center items-center">
+            <img src="/images/spa.png" alt="수영장 외관" class="rounded shadow-md w-full object-cover max-h-48" />
+            <img src="/images/spa.png" alt="수영장 락 제품 설치 예시" class="rounded shadow-md w-full object-cover max-h-48" />
+          </div>
+          <div class="order-1 md:order-2">
+            <h3 class="text-xl font-semibold text-blue-600 mb-2">수영장 / 리조트</h3>
+            <p class="text-gray-700 text-sm leading-relaxed dark:text-gray-300">
+              리조트 및 수영장과 같은 공간에 적합한 비접촉형 락 시스템을 통해 간편한 출입과 내부 동선 관리가 가능합니다. 방수 설계 및 야외 환경에 적합한 튼튼한 하우징이 특징입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Section 3: 통합스포츠센터 -->
+      <div class="mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-6">
+          <div>
+            <h3 class="text-xl font-semibold text-blue-600 mb-2">통합스포츠센터</h3>
+            <p class="text-gray-700 text-sm leading-relaxed dark:text-gray-300">
+              복합 스포츠 시설에 적합한 통합 전자락 시스템은 회원관리, 구역별 출입제어, 시간대별 설정 기능 등 다양한 운영 환경에 유연하게 대응합니다.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-4 justify-center items-center">
+            <img src="/images/fit.png" alt="스포츠센터 외관" class="rounded shadow-md w-full object-cover max-h-48" />
+            <img src="/images/fit.png" alt="스포츠센터 락 제품 설치 예시" class="rounded shadow-md w-full object-cover max-h-48" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- 인증 및 수상 이력 -->
+<section class="bg-white dark:bg-[--aw-color-bg-default] py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-bold  dark:text-white mb-10 text-center">
+      인증 및 수상 이력
+    </h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+      <!-- 예시 아이템 반복 -->
+      {[
+        { title: 'KC 인증', image: '/images/example.png', description: '전기안전 인증 완료' },
+        { title: 'ISO 9001', image: '/images/example.png', description: '품질경영 인증' },
+        { title: '스마트시티 대상', image: '/images/example.png', description: '2023년 수상' },
+        { title: '조달 등록', image: '/images/example.png', description: '나라장터 등록 기업' },
+        { title: '벤처기업 인증', image: '/images/example.png', description: '기술혁신 인증' },
+        { title: '특허 등록', image: '/images/example.png', description: '출입장치 기술 특허' },
+        { title: 'INNOBIZ 인증', image: '/images/example.png', description: '기술혁신형 중소기업' },
+        { title: 'GS 인증', image: '/images/example.png', description: '소프트웨어 품질 인증' },
+        { title: '우수제품 지정', image: '/images/example.png', description: '조달청 선정' },
+        { title: '한국정보통신기술협회', image: '/images/example.png', description: 'TTA 인증 획득' }
+      ].map((item) => (
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-4 text-center hover:shadow-lg transition">
+          <img src={item.image} alt={item.title} class="h-12 mx-auto mb-4 object-contain" />
+          <h3 class="text-sm font-semibold text-gray-800 dark:text-white">{item.title}</h3>
+          <p class="text-xs text-gray-600 dark:text-gray-300 mt-2">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+  
+<section class="bg-blue-50 py-16 px-4 sm:px-6 lg:px-8 dark:bg-gray-800">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 mb-10 text-center dark:text-blue-600">
+      DK 시스템 연혁 전체
+    </h2>
+
+      <div class="grid gap-10 md:grid-cols-2">
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2024.03</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">스마트 전자키 2세대 출시</p>
+        </div>
+
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2023.11</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">A사 아파트 2,000세대 납품 완료</p>
+        </div>
+
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2023.02</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">보안 솔루션 제휴사 3곳 확대</p>
+        </div>
+
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2022.05</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">모바일 앱 기능 리뉴얼 및 IoT 연동 강화</p>
+        </div>
+
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2021.08</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">기업형 출입통제 시스템 개발</p>
+        </div>
+
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2021.01</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">DK 시스템 법인 설립</p>
+        </div>
+
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2020.07</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">개인 맞춤형 출입 보안 알고리즘 연구 착수</p>
+        </div>
+
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2019.03</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">시범사업으로 스마트 락 시스템 운영 시작</p>
+        </div>
+        
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2020.07</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">개인 맞춤형 출입 보안 알고리즘 연구 착수</p>
+        </div>
+
+        <div class="relative pl-6 border-l-4 border-blue-600">
+          <time class="text-blue-600 font-semibold">2019.03</time>
+          <p class="text-gray-800 font-medium mt-1 dark:text-white">시범사업으로 스마트 락 시스템 운영 시작</p>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <section class="bg-white dark:bg-[var(--aw-color-bg-default)] py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div class="w-full h-auto">
+        <a 
+          href="https://map.kakao.com/?urlX=433898.0000000027&urlY=1118421.9999999972&name=인천 계양구 아나지로 83&map_type=TYPE_MAP&from=roughmap" 
+          target="_blank"
+          class="block w-full"
+        >
+          <img
+            src="http://t1.daumcdn.net/roughmap/imgmap/c88972d78232c7d1c903ba0259a36b6f9fbdc7741411a17c559f5ba4d6adf598"
+            alt="DK시스템 지도"
+            class="w-full rounded border shadow-sm"
+          />
+        </a>
+      </div>
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">오시는 길</h2>
+        <table class="w-full border border-gray-200 text-sm text-gray-700 dark:text-gray-300">
+          <tbody>
+            <tr class="border-t">
+              <td class="font-medium py-2 px-3 w-24">주소</td>
+              <td class="py-2 px-3">인천광역시 계양구 아나지로 83, 2층 (디케이시스템)</td>
+            </tr>
+            <tr class="border-t">
+              <td class="font-medium py-2 px-3">지하철</td>
+              <td class="py-2 px-3">
+                인천 1호선 <strong>작전역</strong> 4번 출구 → 도보 약 10분
+              </td>
+            </tr>
+            <tr class="border-t">
+              <td class="font-medium py-2 px-3">버스</td>
+              <td class="py-2 px-3">
+                <div><strong>일반</strong>: 80, 300, 6118</div>
+                <div><strong>광역</strong>: 9300, 7700</div>
+                <div><strong>마을</strong>: 1031</div>
+                <div>정류장: 효성삼보아파트 (도보 5분)</div>
+              </td>
+            </tr>
+            <tr class="border-t">
+              <td class="font-medium py-2 px-3">도보</td>
+              <td class="py-2 px-3">
+                작전역 4번 출구에서 직진 후 왼쪽 사거리 방향 도보 10분
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+    
+</Layout>

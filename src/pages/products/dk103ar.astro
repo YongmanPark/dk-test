@@ -1,0 +1,45 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import ProductDetailLayout from '~/components/product/ProductDetailLayout.astro';
+
+const metadata = { title: 'DK102AR 제품 상세' };
+
+const title = 'DK103AR';
+const category = '시스템전자키';
+
+const images = [
+  '/images/products/DK103AR.png',
+  '/images/products/band1.JPG',
+  '/images/products/band2.JPG',
+  '/images/products/band3.JPG',
+];
+
+const specs = [
+  { label: '모델명', value: '103AR 매립형' },
+  { label: '색상', value: '블랙 & 실버 & 골드' },
+  { label: '재질', value: 'PC/ABS, KEYPAD : ACRYLE' },
+  { label: '사이즈', value: '가로 73mm 세로 108mm 깊이 50mm (돌출부위 3mm)' },
+  { label: '배터리', value: 'AA 알카라인 배터리 3개' },
+  { label: '용도', value: '사우나, 수영장, 골프장, 휘트니스센터 등<br>모든 락커 제어 시스템이 필요한 시설' },
+  { label: '제조 생산', value: '국내 (직접생산)' },
+];
+
+const detailImagePaths = [
+  '/images/productdetails/102-1.PNG',
+  '/images/productdetails/102-2.PNG',
+  '/images/productdetails/102-3.PNG',
+  '/images/productdetails/102-4.PNG',
+  '/images/productdetails/102-5.PNG',
+  '/images/productdetails/102-6.PNG',
+];
+---
+
+<Layout metadata={metadata}>
+  <ProductDetailLayout
+    title={title}
+    category={category}
+    images={images}
+    specs={specs}
+    detailImagePaths={detailImagePaths}
+  />
+</Layout>

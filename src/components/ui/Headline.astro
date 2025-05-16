@@ -1,0 +1,25 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  tagline?: string;
+  classes?: {
+    container?: string;
+    title?: string;
+    subtitle?: string;
+    tagline?: string;
+  };
+}
+
+const { title, subtitle, tagline, classes = {} } = Astro.props;
+---
+
+<div class={`steps-headline mb-8 ${classes.container || ''}`}>
+  {tagline && (
+    <p class={`steps-tagline text-sm font-semibold ${classes.tagline || 'text-blue-600'}`}>{tagline}</p>
+  )}
+  <h2 class={`steps-title text-3xl font-extrabold tracking-tight ${classes.title || 'text-gray-900'}`} set:html={title} />
+  {subtitle && (
+    <p class={`steps-subtitle mt-4 text-lg ${classes.subtitle || 'text-gray-800'}`}>{subtitle}</p>
+  )}
+</div>

@@ -1,0 +1,349 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: '디케이시스템 DK System',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'DK 카탈로그',
+        href: '/downloads/dk-catalog.pdf',
+        target: '_blank',
+        icon: 'tabler:download',
+        download: '디케이시스템 카탈로그'
+      },
+      { text: 'Learn more', href: '#catalog' },
+    ]}
+    image={{ src: '~/assets/images/dk-products-grid.png', alt: 'DKsystem product Image' }}
+  >
+  <Fragment slot="title">
+    <span><span class="text-purple-600 highlight">전자키</span>의 기준</span>을 바꾸다,
+    <span class="text-purple-600 highlight">DK 시스템</span>  
+  </Fragment>
+
+
+    <!-- <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
+        + Tailwind CSS.</span
+      >
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
+      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
+      Blogs.
+    </Fragment> -->
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline leading-relaxed text-lg">
+        검증된 기술력으로 삶의 공간을 바꾸는 <span class="font-semibold text-accent">DK 시스템</span><br />
+        일상의 편리함과 안전을 위한 혁신은 지금도 계속됩니다
+      </span>
+    </Fragment>
+  </Hero>
+
+<!-- Note Widget ******************* -->
+<section class="bg-blue-50 dark:bg-gray-800 py-16" id="catalog">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-center text-sm font-semibold text-blue-600 dark:text-blue-400 mb-1">CATALOG</p>
+    <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-6 text-center">
+      대표 제품 라인업
+    </h2>
+    <p class="text-center text-gray-600 dark:text-gray-300 mb-12">
+      DK 시스템의 스마트 전자키 주요 모델을 소개합니다.
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+      <!-- ✅ 제품 카드 샘플 (반복문 사용) -->
+      {[
+        { href: '/products/dk102ar', img: '/images/products/DK102AR.png', title: 'DK102AR', desc: '간편한 설치와 베이직 기능' },
+        { href: '/products/dk304ar', img: '/images/products/DK304AR.png', title: 'DK304AR', desc: '터치 센서와 간편한 출입' },
+        { href: '/products/dk104ar', img: '/images/products/DK104AR.png', title: 'DK104AR', desc: '업그레이드된 보안 모듈 탑재' },
+        { href: '/products/dk303ar', img: '/images/products/DK303AR.png', title: 'DK303AR', desc: '강화유리 터치패드 적용' },
+        { href: '/products/dk201ap', img: '/images/products/DK201AP.png', title: 'DK201AP', desc: '배터리 일체형 슬림 모델' },
+        { href: '/products/dk202ap', img: '/images/products/DK202AP.png', title: 'DK202AP', desc: '화이트 컬러 베스트셀러' },
+        { href: '/products/dk203ap', img: '/images/products/DK203AP.png', title: 'DK203AP', desc: '현관과 내부 출입문 겸용' },
+        { href: '/products/dk204ap', img: '/images/products/DK204AP.png', title: 'DK204AP', desc: '초소형 출입 솔루션 적용' },
+        { href: '/products/dk308ar', img: '/images/products/DK308AR.png', title: 'DK308AR', desc: '심플함과 실용성을 겸비한 제품' },
+        { href: '/products/dk209ap', img: '/images/products/DK209AP.png', title: 'DK209AP', desc: '심플함과 실용성을 겸비한 제품' }
+      ].map((product) => (
+        <a href={product.href} 
+           class="relative group overflow-hidden rounded-lg shadow-md block aspect-square bg-white transition duration-300 hover:shadow-lg">
+          <img src={product.img} alt={product.title} 
+               class="w-full h-full object-contain p-3 transition duration-300 group-hover:blur-sm" />
+          <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition duration-300 
+                      flex flex-col justify-center items-center text-white text-center px-2">
+            <h3 class="text-base font-semibold mb-1">{product.title}</h3>
+            <p class="text-xs">{product.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/products/key" 
+         class="inline-block bg-blue-600 text-white text-sm font-medium py-2 px-5 rounded hover:bg-blue-700 transition">
+        전체 제품 보기 →
+      </a>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- Features Widget *************** -->
+
+  <Features
+  id="features"
+  tagline="Features"
+  title="DK 시스템이 제공하는 가치"
+  subtitle="경험과 기술력을 바탕으로, DK 시스템은 사람과 공간을 더 안전하게 연결합니다."
+  items={[
+    {
+      title: '스마트 출입통제 시스템',
+      description:
+        'IoT 기반의 첨단 기술로 보안성과 편의성을 동시에 제공하며, 다양한 환경에 유연하게 대응합니다.',
+      icon: 'tabler:key',
+    },
+    {
+      title: '현장 중심 기술력',
+      description:
+        '수많은 실적과 현장 경험을 통해 검증된 솔루션으로, 실제 사용 환경에 최적화된 시스템을 제공합니다.',
+      icon: 'tabler:building-warehouse',
+    },
+    {
+      title: '고객 맞춤형 설계',
+      description:
+        '기업, 공공기관, 교육시설 등 다양한 고객 요구에 맞춘 맞춤형 출입 시스템을 설계하고 제공합니다.',
+      icon: 'tabler:settings',
+    },
+    {
+      title: '안정적인 유지보수',
+      description:
+        '전국적인 A/S망과 체계적인 유지보수 시스템으로, 제품 설치 이후에도 안심할 수 있는 서비스를 보장합니다.',
+      icon: 'tabler:shield-check',
+    },
+    {
+      title: '신속한 설치와 셋업',
+      description:
+        '현장 상황에 최적화된 설치 프로세스를 통해 빠르고 정확한 시스템 구축이 가능합니다.',
+      icon: 'tabler:clock-bolt',
+    },
+    {
+      title: '지속적인 기술 혁신',
+      description:
+        '빠르게 변화하는 기술 트렌드에 맞춰 지속적인 개발과 업그레이드를 통해 최상의 솔루션을 제공합니다.',
+      icon: 'tabler:bulb',
+    },
+  ]}
+/>
+
+  <!-- Content Widget **************** -->
+
+<!-- Steps Section 적용 -->
+<section class="bg-blue-50 dark:bg-gray-800">
+  <Steps
+    tagline="STEPS"
+    title="DK 시스템 업무 진행"
+    items={[
+      {
+        title: '1단계: <span class="font-medium">상담 및 요구 분석</span>',
+        description: '고객의 환경과 요구사항을 면밀히 분석하여 최적의 보안 솔루션을 제안합니다. 현장 방문 및 사전 진단을 통해 정확한 방향을 설정합니다.',
+        icon: 'tabler:message-2',
+      },
+      {
+        title: '2단계: <span class="font-medium">맞춤형 시스템 설계</span>',
+        description: '분석된 데이터를 바탕으로 현장에 최적화된 출입 관리 시스템을 설계합니다. 고객의 니즈에 따라 기능과 규모를 유연하게 조정합니다.',
+        icon: 'tabler:tools',
+      },
+      {
+        title: '3단계: <span class="font-medium">설치 및 구축</span>',
+        description: '전문 엔지니어가 직접 방문하여 신속하고 안전하게 시스템을 설치합니다. 설치 후 기능 점검 및 초기 세팅을 함께 진행합니다.',
+        icon: 'tabler:building',
+      },
+      {
+        title: '4단계: <span class="font-medium">교육 및 유지관리</span>',
+        description: '사용자 교육을 통해 시스템 활용도를 극대화하고, 사후 유지보수 서비스를 통해 안정적인 운영을 보장합니다.',
+        icon: 'tabler:school',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      alt: 'Steps image',
+    }}
+    classes={{
+      headline: {
+        title: 'text-gray-800 dark:text-white text-center',
+        subtitle: 'text-gray-600 dark:text-gray-300 text-center',
+        tagline: 'text-blue-600 text-center',
+      },
+      items: {
+        title: 'text-gray-800 dark:text-white',
+        description: 'text-gray-600 dark:text-gray-300',
+        icon: 'text-blue-600',
+      },
+    }}
+  />
+</section>
+
+
+
+<section class="py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-center text-sm font-semibold text-blue-600 mb-1">HISTORY</p>
+    <h2 class="text-3xl font-extrabold tracking-tight text-gray-800 dark:text-white sm:text-4xl mb-16 text-center">
+      DK 시스템 연혁 요약
+    </h2>
+
+    <div class="relative">
+      <!-- 세로선 -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-blue-600"></div>
+
+      <div class="space-y-16 relative z-10">
+        <!-- Item 1 (왼쪽) -->
+        <div class="relative flex flex-col md:grid md:grid-cols-9 md:items-center">
+          <div class="md:col-span-4 md:text-right md:pr-6">
+            <time class="text-blue-600 font-semibold text-lg">2024.03</time>
+            <p class="text-gray-800 dark:text-white mt-2">스마트 전자키 2세대 출시</p>
+          </div>
+          <div class="hidden md:block md:col-span-1 mx-auto">
+            <div class="w-5 h-5 bg-blue-600 rounded-full"></div>
+          </div>
+          <div class="md:col-span-4"></div>
+        </div>
+
+        <!-- Item 2 (오른쪽) -->
+        <div class="relative flex flex-col md:grid md:grid-cols-9 md:items-center">
+          <div class="md:col-span-4"></div>
+          <div class="hidden md:block md:col-span-1 mx-auto">
+            <div class="w-5 h-5 bg-blue-600 rounded-full"></div>
+          </div>
+          <div class="md:col-span-4 md:pl-6">
+            <time class="text-blue-600 font-semibold text-lg">2023.11</time>
+            <p class="text-gray-800 dark:text-white mt-2">A사 아파트 2,000세대 납품 완료</p>
+          </div>
+        </div>
+
+        <!-- Item 3 (왼쪽) -->
+        <div class="relative flex flex-col md:grid md:grid-cols-9 md:items-center">
+          <div class="md:col-span-4 md:text-right md:pr-6">
+            <time class="text-blue-600 font-semibold text-lg">2022.05</time>
+            <p class="text-gray-800 dark:text-white mt-2">모바일 앱 기능 리뉴얼</p>
+          </div>
+          <div class="hidden md:block md:col-span-1 mx-auto">
+            <div class="w-5 h-5 bg-blue-600 rounded-full"></div>
+          </div>
+          <div class="md:col-span-4"></div>
+        </div>
+
+        <!-- Item 4 (오른쪽) -->
+        <div class="relative flex flex-col md:grid md:grid-cols-9 md:items-center">
+          <div class="md:col-span-4"></div>
+          <div class="hidden md:block md:col-span-1 mx-auto">
+            <div class="w-5 h-5 bg-blue-600 rounded-full"></div>
+          </div>
+          <div class="md:col-span-4 md:pl-6">
+            <time class="text-blue-600 font-semibold text-lg">2021.08</time>
+            <p class="text-gray-800 dark:text-white mt-2">기업형 출입통제 시스템 개발</p>
+          </div>
+        </div>
+
+        <!-- Item 5 (왼쪽) -->
+        <div class="relative flex flex-col md:grid md:grid-cols-9 md:items-center">
+          <div class="md:col-span-4 md:text-right md:pr-6">
+            <time class="text-blue-600 font-semibold text-lg">2021.01</time>
+            <p class="text-gray-800 dark:text-white mt-2">DK 시스템 법인 설립</p>
+          </div>
+          <div class="hidden md:block md:col-span-1 mx-auto">
+            <div class="w-5 h-5 bg-blue-600 rounded-full"></div>
+          </div>
+          <div class="md:col-span-4"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-16 mb-8">
+      <a href="/about/history" class="inline-block bg-blue-600 text-white text-sm font-medium py-2 px-5 rounded hover:bg-blue-700 transition">
+        전체 연혁 보기 →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-blue-50 dark:bg-gray-900 mt-2">
+  <BlogLatestPosts
+    title={`Find out more content in our <span class="text-purple-600 dark:text-purple-600 highlight">BLOG</span>`} 
+    information={`DK 시스템 블로그에서는 제품 소개, 설치 사례, 보안 솔루션 트렌드까지<br>다양한 정보를 제공합니다.
+                  실제 현장의 경험을 바탕으로 고객에게 도움이 되는 인사이트를 전해드립니다.`}
+    classes={{  
+      title: 'text-gray-900 dark:text-black text-center',       // ✅ 제목 검정 유지
+      information: 'text-gray-700 dark:text-black text-center', // ✅ 정보 텍스트 검정 유지
+      cardTitle: 'text-gray-900 dark:text-black',               // ✅ 썸네일 카드 제목 검정
+      cardDescription: 'text-gray-700 dark:text-black',         // ✅ 썸네일 카드 설명 검정
+    }}
+  />
+</section>
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'DK 카탈로그',
+        href: '/downloads/dk-catalog.pdf',
+        target: '_blank',
+        icon: 'tabler:download',
+        download: '디케이시스템 카탈로그'
+      },
+    ]}
+  >
+    <Fragment slot="title">
+    단순한 도어락이 아닙니다. <br />
+    <span class="text-blue-600 font-bold">DK는 시스템입니다.</span>
+  </Fragment>
+  
+  <Fragment slot="subtitle">
+    <p class="text-base text-gray-600 dark:text-gray-300 mt-2">
+      불필요한 열쇠로 출입을 제어하던 시대에서, 
+      손가락 하나로 흐름을 만들어가는 시스템으로 나아갑니다.
+    </p>
+  </Fragment>
+  
+
+  </CallToAction>
+
+    <!-- 🔽 Scroll to Top 버튼 삽입 -->
+    <button
+    id="scrollToTopBtn"
+    class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-opacity opacity-0 flex items-center justify-center text-lg"
+    aria-label="Scroll to top"
+  >
+    ↑
+  </button>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        if (!scrollBtn) return;
+    
+        window.addEventListener('scroll', () => {
+          scrollBtn.style.opacity = window.scrollY > 300 ? '1' : '0';
+        });
+    
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    </script>
+    
+  
+</Layout>

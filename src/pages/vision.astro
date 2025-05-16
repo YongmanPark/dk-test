@@ -1,0 +1,33 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: '연혁 및 비전',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="max-w-4xl mx-auto py-16 px-4">
+    <h1 class="text-3xl font-bold text-center mb-8">DK 시스템의 연혁 및 비전</h1>
+
+    <div class="space-y-10">
+      <div>
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">회사 연혁</h2>
+        <ul class="list-disc pl-6 text-gray-700">
+          <li><strong>2024</strong> - DK 스마트락 신규 라인업 출시</li>
+          <li><strong>2022</strong> - 전국 1,000개 단지 설치 달성</li>
+          <li><strong>2020</strong> - 모바일 연동 시스템 출시</li>
+          <li><strong>2018</strong> - DK 시스템 설립</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">비전</h2>
+        <p class="text-gray-700 leading-relaxed">
+          DK 시스템은 '출입의 흐름을 설계하는 보안 플랫폼'을 목표로, 스마트 시티 시대에 적합한 통합 출입 시스템을 구축하고자 합니다.
+          기술 중심의 혁신과 고객 중심의 서비스를 통해 출입관리의 새로운 기준을 만들어가겠습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

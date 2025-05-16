@@ -1,0 +1,109 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import FilterScript from '~/components/FilterScript.astro';
+
+const metadata = {
+  title: '제품 소개 - 스마트 전자키',
+};
+
+const categories = ['전체', '시스템 전자키', '번호키', 'RFID', '무전원 다이얼'];
+const products = [
+  { name: 'DK102AR', image: '/images/products/DK102AR.png', category: '시스템 전자키' },
+  { name: 'DK103AR', image: '/images/products/DK103AR.png', category: '시스템 전자키' },
+  { name: 'DK104AR', image: '/images/products/DK104AR.png', category: '시스템 전자키' },
+  { name: 'DK105AR', image: '/images/products/DK105AR.png', category: '시스템 전자키' },
+  { name: 'DK201AP', image: '/images/products/DK201AP.png', category: '번호키' },
+  { name: 'DK201WAP', image: '/images/products/DK201WAP.png', category: '번호키' },
+  { name: 'DK202AP', image: '/images/products/DK202AP.png', category: '번호키' },
+  { name: 'DK202WAP', image: '/images/products/DK202WAP.png', category: '번호키' },
+  { name: 'DK203AP', image: '/images/products/DK203AP.png', category: '번호키' },
+  { name: 'DK204AP', image: '/images/products/DK204AP.png', category: '번호키' },
+  { name: 'DK205AP', image: '/images/products/DK205AP.png', category: '번호키' },
+  { name: 'DK206AP', image: '/images/products/DK206AP.png', category: '번호키' },
+  { name: 'DK206WAP', image: '/images/products/DK206WAP.png', category: '번호키' },
+  { name: 'DK207AP', image: '/images/products/DK207AP.png', category: '번호키' },
+  { name: 'DK207WAP', image: '/images/products/DK207WAP.png', category: '번호키' },
+  { name: 'DK208AP', image: '/images/products/DK208AP.png', category: '번호키' },
+  { name: 'DK209AP', image: '/images/products/DK209AP.png', category: '번호키' },
+  { name: 'DK210', image: '/images/products/DK210.png', category: '번호키' },
+  { name: 'DK302AR', image: '/images/products/DK302AR.png', category: 'RFID' },
+  { name: 'DK303AR', image: '/images/products/DK303AR.png', category: 'RFID' },
+  { name: 'DK304AR', image: '/images/products/DK304AR.png', category: 'RFID' },
+  { name: 'DK305AR', image: '/images/products/DK305AR.png', category: 'RFID' },
+  { name: 'DK308AR', image: '/images/products/DK308AR.png', category: 'RFID' },
+
+  { name: 'DK_dial', image: '/images/products/DK_dial.png', category: '무전원 다이얼' },
+  { name: 'DK_dial2', image: '/images/products/DK_dial2.png', category: '무전원 다이얼' }
+
+];
+---
+
+<Layout metadata={metadata}>
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-8 text-center">제품 소개</h1>
+
+    <!-- 필터 탭 -->
+    <div class="flex justify-center flex-wrap gap-0 mb-10 text-center text-base font-medium" id="filter-tabs">
+      {categories.map((cat, index) => (
+        <div class="flex items-center">
+          <button
+            type="button"
+            class="filter-tab relative px-4 py-1 text-gray-500 hover:text-blue-600 transition"
+            data-category={cat}
+          >
+            <span>{cat}</span>
+          </button>
+          {index < categories.length - 1 && (
+            <span class="text-gray-300 px-2 select-none">|</span>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- 제품 목록 -->
+    <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-6 justify-center">
+      {products.map((product) => (
+        <a
+          href={`/products/${product.name.toLowerCase()}`}
+          class="product-card relative group overflow-hidden rounded-lg shadow-lg block"
+          data-category={product.category}
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            class="w-full h-48 object-contain p-4 bg-white transition duration-300 group-hover:blur-sm"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center text-white text-center px-4"
+          >
+            <h3 class="text-xl font-bold mb-2">{product.name}</h3>
+            <p class="text-sm">시리즈: {product.category}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- 스타일 -->
+  <style>
+    .filter-tab.active {
+      color: #2563eb;
+    }
+    .filter-tab.active span {
+      font-weight: 700;
+      position: relative;
+    }
+    .filter-tab.active span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background-color: #2563eb;
+    }
+  </style>
+
+  <!-- 필터 스크립트 클라이언트 사이드 실행 -->
+  <FilterScript client:load />
+</Layout>

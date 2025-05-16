@@ -1,0 +1,85 @@
+---
+const { images = [], imageSizeClass = 'w-full max-w-md' } = Astro.props;
+const imagesJson = JSON.stringify(images);
+---
+
+<div id="imageData" data-images={imagesJson}></div>
+
+<div class="relative w-full flex flex-col items-center">
+  <div class="relative w-full md:w-[60%]">
+    <button id="prevBtn" class="absolute -left-6 top-1/2 -translate-y-1/2 text-4xl text-gray-500 hover:text-blue-600 z-10">❮</button>
+    <img
+      id="mainImage"
+      src={images[0]}
+      alt="제품 이미지"
+      class={`rounded border mx-auto shadow-lg transition duration-300 object-contain ${imageSizeClass}`}
+    />
+    <button id="nextBtn" class="absolute -right-6 top-1/2 -translate-y-1/2 text-4xl text-gray-500 hover:text-blue-600 z-10">❯</button>
+  </div>
+  <!-- 썸네일 -->
+  <div id="thumbnailContainer" class="flex justify-center mt-4 gap-2 flex-wrap">
+    {images.map((img, index) => (
+      <img
+        src={img}
+        class="thumbnail w-16 h-16 border rounded object-contain cursor-pointer transition"
+        data-index={index}
+      />
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  function initGallery() {
+    const dataElement = document.getElementById('imageData');
+    if (!dataElement) return;
+
+    const images = JSON.parse(dataElement.dataset.images || '[]');
+    if (!images.length) return;
+
+    let current = 0;
+
+    const mainImage = document.getElementById('mainImage');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const prev = document.getElementById('prevBtn');
+    const next = document.getElementById('nextBtn');
+
+    const updateImage = (index) => {
+      current = index;
+      mainImage.src = images[current];
+
+      thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle('ring-2', i === current);
+        thumb.classList.toggle('ring-blue-500', i === current);
+      });
+
+      thumbnails[current]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    };
+
+    const handleNavigation = (delta) => {
+      current = (current + delta + images.length) % images.length;
+      updateImage(current);
+    };
+
+    prev?.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleNavigation(-1);
+    });
+
+    next?.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleNavigation(1);
+    });
+
+    thumbnails.forEach((thumb, i) => {
+      thumb.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateImage(i);
+      });
+    });
+
+    updateImage(current);
+  }
+
+  window.addEventListener('DOMContentLoaded', initGallery);
+  document.addEventListener('astro:after-swap', initGallery);
+</script>

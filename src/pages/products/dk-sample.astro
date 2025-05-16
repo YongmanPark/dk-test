@@ -1,0 +1,165 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'DK102AR 제품 상세',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <!-- 📷 이미지 갤러리 -->
+      <div class="relative w-full flex flex-col items-center">
+        <div class="relative w-full md:w-[60%]">
+          <button id="prevBtn" class="absolute -left-6 top-1/2 -translate-y-1/2 text-4xl text-gray-500 hover:text-blue-600 z-10">
+            ❮
+          </button>
+          <img
+            id="mainImage"
+            src="/images/products/DK102AR.png"
+            alt="제품 이미지"
+            class="rounded border w-full mx-auto shadow-lg transition duration-300 object-contain"
+          />
+          <button id="nextBtn" class="absolute -right-6 top-1/2 -translate-y-1/2 text-4xl text-gray-500 hover:text-blue-600 z-10">
+            ❯
+          </button>
+        </div>
+
+        <!-- 썸네일 -->
+        <div id="thumbnailContainer" class="flex justify-center mt-4 gap-2 flex-wrap">
+          <img src="/images/products/DK102AR.png" class="thumbnail w-16 h-16 border rounded object-contain cursor-pointer transition" data-index="0" />
+          <img src="/images/products/DK103AR.png" class="thumbnail w-16 h-16 border rounded object-contain cursor-pointer transition" data-index="1" />
+          <img src="/images/products/DK104AR.png" class="thumbnail w-16 h-16 border rounded object-contain cursor-pointer transition" data-index="2" />
+          <img src="/images/products/DK105AR.png" class="thumbnail w-16 h-16 border rounded object-contain cursor-pointer transition" data-index="3" />
+        </div>
+      </div>
+
+      <!-- 📄 제품 설명 -->
+      <div>
+        <p class="text-black-600 text-base font-semibold mb-1">시스템전자키</p>
+        <h1 class="text-4xl font-bold mb-4 text-blue-600">DK102AR</h1>
+      <!-- 제품 사양 테이블 -->
+        <div class="mt-10">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">제품 사양</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border border-gray-200">
+              <tbody>
+                <tr class="border-b">
+                  <th class="px-4 py-2 bg-gray-50 font-medium w-32">모델명</th>
+                  <td class="px-4 py-2">102AR 매립형</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-4 py-2 bg-gray-50 font-medium">색상</th>
+                  <td class="px-4 py-2">블랙 & 실버 & 골드</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-4 py-2 bg-gray-50 font-medium">재질</th>
+                  <td class="px-4 py-2">PC/ABS, KEYPAD : ACRYLE</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-4 py-2 bg-gray-50 font-medium">사이즈</th>
+                  <td class="px-4 py-2">가로 73mm 세로 108mm 깊이 50mm (돌출부위 3mm)</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-4 py-2 bg-gray-50 font-medium">배터리</th>
+                  <td class="px-4 py-2">AA 알카라인 배터리 3개</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-4 py-2 bg-gray-50 font-medium">용도</th>
+                  <td class="px-4 py-2">
+                    사우나, 수영장, 골프장, 휘트니스센터 등<br />
+                    모든 락커 제어 시스템이 필요한 시설
+                  </td>
+                </tr>
+                <tr>
+                  <th class="px-4 py-2 bg-gray-50 font-medium">제조 생산</th>
+                  <td class="px-4 py-2">국내 (직접생산)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const images = JSON.parse(`${JSON.stringify([
+      '/images/products/DK102AR.png',
+      '/images/products/DK103AR.png',
+      '/images/products/DK104AR.png',
+      '/images/products/DK105AR.png',
+    ])}`);
+
+    let current = 0;
+
+    const mainImage = document.getElementById('mainImage');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const prev = document.getElementById('prevBtn');
+    const next = document.getElementById('nextBtn');
+
+    const updateImage = (index) => {
+      current = index;
+      mainImage.src = images[current];
+
+      thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle('ring-2', i === current);
+        thumb.classList.toggle('ring-blue-500', i === current);
+      });
+
+      thumbnails[current]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    };
+
+    const handleNavigation = (delta) => {
+      const scrollY = window.scrollY;
+      current = (current + delta + images.length) % images.length;
+      updateImage(current);
+      window.scrollTo({ top: scrollY });
+    };
+
+    prev.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleNavigation(-1);
+    });
+
+    next.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleNavigation(1);
+    });
+
+    thumbnails.forEach((thumb, i) => {
+      thumb.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateImage(i);
+      });
+    });
+
+    updateImage(current);
+  </script>
+
+<!-- 제품 상세 하단 이미지 섹션 -->
+<section class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+  <div class="w-full md:w-[70%] mx-auto space-y-8">
+    <img src="/images/productdetails/102-1.PNG" alt="제품특징" class="w-full rounded shadow" />
+    <img src="/images/productdetails/102-2.PNG" alt="시스템 특징" class="w-full rounded shadow" />
+    <img src="/images/productdetails/102-3.PNG" alt="편리성" class="w-full rounded shadow" />
+    <img src="/images/productdetails/102-4.PNG" alt="특허 인증" class="w-full rounded shadow" />
+    <img src="/images/productdetails/102-5.PNG" alt="무인 발권 시스템" class="w-full rounded shadow" />
+    <img src="/images/productdetails/102-6.PNG" alt="적용 분야" class="w-full rounded shadow" />
+  </div>
+</section>
+
+
+<!-- CTA 버튼 -->
+<div class="max-w-5xl mx-auto px-4 py-8 flex justify-center gap-4">
+  <a href="tel:010-0000-0000" class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+    📞 전화 문의
+  </a>
+  <a href="/contact" class="px-6 py-3 bg-gray-800 text-white rounded hover:bg-gray-900 transition">
+    ✉️ 문의 페이지
+  </a>
+</div>
+
+</Layout>
